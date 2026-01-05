@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airline Reservation System</title>
+
+  <!-- ===== CSS ===== -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f6fc;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      background: white;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #003366;
+      color: white;
+      border: none;
+      padding: 10px;
+      margin-top: 15px;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #00509e;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #e6f0ff;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Airline Reservation System</h1>
+  </header>
+
+  <div class="container">
+    <label>From</label>
+    <input type="text" id="from" placeholder="Enter departure city">
+
+    <label>To</label>
+    <input type="text" id="to" placeholder="Enter destination city">
+
+    <label>Date</label>
+    <input type="date" id="date">
+
+    <label>Class</label>
+    <select id="class">
+      <option>Economy</option>
+      <option>Business</option>
+      <option>First Class</option>
+    </select>
+
+    <label>Passengers</label>
+    <input type="number" id="passengers" min="1" value="1">
+
+    <button onclick="searchFlight()">Search Flights</button>
+
+    <div id="output" class="result" style="display:none;"></div>
+  </div>
+
+  <!-- ===== JavaScript ===== -->
+  <script>
+    function searchFlight() {
+      const from = document.getElementById("from").value;
+      const to = document.getElementById("to").value;
+      const date = document.getElementById("date").value;
+      const travelClass = document.getElementById("class").value;
+      const passengers = document.getElementById("passengers").value;
+
+      if (from === "" || to === "" || date === "") {
+        alert("Please fill all required fields.");
+        return;
+      }
+
+      const output = document.getElementById("output");
+      output.style.display = "block";
+      output.innerHTML = `
+        <h3>Flight Details</h3>
+        <p><strong>From:</strong> ${from}</p>
+        <p><strong>To:</strong> ${to}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Class:</strong> ${travelClass}</p>
+        <p><strong>Passengers:</strong> ${passengers}</p>
+        <p><strong>Status:</strong> Flights Available</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
